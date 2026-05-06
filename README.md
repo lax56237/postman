@@ -121,7 +121,7 @@
 ### 2️⃣ Clone & Install
 ```bash
 # Clone repository
-git clone https://github.com/Aestheticsuraj234/postman-clone.git
+git clone https://github.com/lax56237/postman.git
 cd postman-clone
 
 # Install dependencies
@@ -132,7 +132,7 @@ npm install
 Create `.env.local` file in root directory:
 ```env
 # Database
-DATABASE_URL="postgresql://postgres:2005L@xpostgres@localhost:5432/postmanclone"
+DATABASE_URL="postgresql://<username>:<password>@<host>:<port>/<database>"
 
 # Auth
 BETTER_AUTH_SECRET="your-secret-key"
@@ -256,7 +256,7 @@ docker --version
 
 #### Step 2: Clone Repository
 ```bash
-git clone https://github.com/Aestheticsuraj234/postman-clone.git
+git clone https://github.com/lax56237/postman.git
 cd postman-clone
 ```
 
@@ -264,7 +264,7 @@ cd postman-clone
 ```bash
 # Create .env.local file
 cat > .env.local << EOF
-DATABASE_URL="postgresql://postgres:2005L@xpostgres@localhost:5432/postmanclone"
+DATABASE_URL="postgresql://<username>:<password>@<host>:<port>/<database>"
 BETTER_AUTH_SECRET="your-super-secret-key-change-this"
 BETTER_AUTH_URL="http://localhost:3000"
 GITHUB_CLIENT_ID="your-github-id"
