@@ -218,7 +218,7 @@ Environment
 #### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/Aestheticsuraj234/postman-clone.git
+git clone https://github.com/lax56237/postman.git
 cd postman-clone
 ```
 
@@ -234,7 +234,7 @@ Create a `.env.local` file in the root directory:
 
 ```env
 # Database Configuration
-DATABASE_URL="postgresql://postgres:2005L@xpostgres@localhost:5432/postmanclone"
+DATABASE_URL="postgresql://<username>:<password>@<host>:<port>/<database>"
 
 # Authentication (Better Auth)
 BETTER_AUTH_SECRET="your-secret-key-here"
@@ -1611,27 +1611,5 @@ Compare different runs
 - [Stripe API](https://stripe.com/docs/api) - Payment processing
 - [Postman Echo](https://echo.hoppscotch.io) - Request echo server
 
----
-
-## Support & Contribution
-
-### Having Issues?
-1. Check [Troubleshooting](#troubleshooting) section
-2. Review [GitHub Issues](https://github.com/Aestheticsuraj234/postman-clone/issues)
-3. Create new issue with details
-
-### Want to Contribute?
-1. Fork repository
-2. Create feature branch
-3. Submit pull request
-4. Follow code style
 
 ---
-
-**Last Updated:** May 6, 2026  
-**Version:** 1.0  
-**Author:** Postman Clone Team
-
----
-
-*This guide covers all aspects of using Postman Clone for REST API testing with both localhost and deployed APIs. For the latest information, check the project repository.*
