@@ -8,23 +8,27 @@
   Test APIs • Manage Collections • Collaborate with Teams • Real-time WebSocket Support
  
   [![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js%2015-black)](https://nextjs.org/)
+
 </div>
 
 ---
 
 ## 📖 Table of Contents
 
-## 🎯 What is Postman Clone? <a id="what-is-postman-clone"></a>
-## ✨ Key Features <a id="key-features"></a>
-## ⚡ Quick Start <a id="quick-start"></a>
-## 🏗️ How It Works <a id="how-it-works"></a>
-## 📚 Installation Guide <a id="installation-guide"></a>
-## 💡 Usage Guide <a id="usage-guide"></a>
-## 🛠️ Technology Stack <a id="technology-stack"></a>
-## 📁 Project Structure <a id="project-structure"></a>
-## 📝 API Testing Examples <a id="api-testing-examples"></a>
-## ❓ Troubleshooting <a id="troubleshooting"></a>
-## 🤝 Contributing <a id="contributing"></a>
+- [🎯 What is Postman Clone?](#-what-is-postman-clone)
+- [✨ Key Features](#-key-features)
+- [⚡ Quick Start](#-quick-start)
+- [🏗️ How It Works](#️-how-it-works)
+- [📚 Installation Guide](#-installation-guide)
+- [💡 Usage Guide](#-usage-guide)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [📁 Project Structure](#-project-structure)
+- [📝 API Testing Examples](#-api-testing-examples)
+- [📊 Database Models](#-database-models)
+- [🔐 Security](#-security)
+- [📈 Performance](#-performance)
+- [❓ Troubleshooting](#-troubleshooting)
+- [🤝 Contributing](#-contributing)
 
 ---
 
@@ -635,102 +639,6 @@ Body:
 
 ---
 
-## ❓ Troubleshooting
-
-### Q: "Cannot connect to localhost API"
-**A:** Check if your API server is running on the specified port
-```bash
-# For port 4000
-netstat -tlnp | grep 4000
-
-# If not running, start your server
-npm run dev
-```
-
-### Q: "Database connection error"
-**A:** Ensure PostgreSQL is running
-```bash
-# Start Docker
-docker-compose up -d
-
-# Check if running
-docker ps | grep postgres
-```
-
-### Q: "Port 3000 already in use"
-**A:** Kill the process using port 3000
-```bash
-# Find process using port 3000
-netstat -tlnp | grep 3000
-
-# Kill process (replace PID with actual process ID)
-kill -9 <PID>
-```
-
-### Q: "Cannot authenticate with OAuth"
-**A:** Verify OAuth credentials in .env.local
-```env
-# Check GitHub OAuth is setup correctly
-GITHUB_CLIENT_ID=your-id
-GITHUB_CLIENT_SECRET=your-secret
-
-# Restart server after changes
-npm run dev
-```
-
-### Q: "Saved requests not showing in sidebar"
-**A:** Try these steps:
-1. Refresh page (F5)
-2. Check if request was saved to correct collection
-3. Check database is running (docker-compose up -d)
-
-### Q: "Response is empty or shows error"
-**A:** Check HTTP status codes:
-- **200-299:** Success ✓
-- **400:** Bad request (check body format)
-- **401:** Unauthorized (add auth headers)
-- **404:** Not found (check URL)
-- **500:** Server error (check API logs)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Help improve Postman Clone:
-
-### How to Contribute
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Commit your work (`git commit -m 'Add amazing feature'`)
-5. Push to branch (`git push origin feature/amazing-feature`)
-6. Open a Pull Request
-
-### Areas to Contribute
-- New features (request scripting, test assertions, etc.)
-- Bug fixes and improvements
-- Documentation and tutorials
-- UI/UX enhancements
-- Performance optimizations
-- Support for more API types
-
-### Development Setup
-```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Run linter
-npm run lint
-
-# Build for production
-npm run build
-```
-
----
-
 ## 📊 Database Models
 
 ### Request Model
@@ -799,11 +707,98 @@ npm run build
 
 ---
 
+## ❓ Troubleshooting
 
+### Q: "Cannot connect to localhost API"
+**A:** Check if your API server is running on the specified port
+```bash
+# For port 4000
+netstat -tlnp | grep 4000
 
+# If not running, start your server
+npm run dev
+```
 
+### Q: "Database connection error"
+**A:** Ensure PostgreSQL is running
+```bash
+# Start Docker
+docker-compose up -d
 
+# Check if running
+docker ps | grep postgres
+```
 
+### Q: "Port 3000 already in use"
+**A:** Kill the process using port 3000
+```bash
+# Find process using port 3000
+netstat -tlnp | grep 3000
 
+# Kill process (replace PID with actual process ID)
+kill -9 <PID>
+```
 
+### Q: "Cannot authenticate with OAuth"
+**A:** Verify OAuth credentials in .env.local
+```env
+# Check GitHub OAuth is setup correctly
+GITHUB_CLIENT_ID=your-id
+GITHUB_CLIENT_SECRET=your-secret
 
+# Restart server after changes
+npm run dev
+```
+
+### Q: "Saved requests not showing in sidebar"
+**A:** Try these steps:
+1. Refresh page (F5)
+2. Check if request was saved to correct collection
+3. Check database is running (`docker-compose up -d`)
+
+### Q: "Response is empty or shows error"
+**A:** Check HTTP status codes:
+- **200-299:** Success ✓
+- **400:** Bad request (check body format)
+- **401:** Unauthorized (add auth headers)
+- **404:** Not found (check URL)
+- **500:** Server error (check API logs)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Help improve Postman Clone:
+
+### How to Contribute
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Commit your work (`git commit -m 'Add amazing feature'`)
+5. Push to branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+### Areas to Contribute
+- New features (request scripting, test assertions, etc.)
+- Bug fixes and improvements
+- Documentation and tutorials
+- UI/UX enhancements
+- Performance optimizations
+- Support for more API types
+
+### Development Setup
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Run linter
+npm run lint
+
+# Build for production
+npm run build
+```
+
+---
