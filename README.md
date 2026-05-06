@@ -14,18 +14,17 @@
 
 ## 📖 Table of Contents
 
-- [What is Postman Clone?](#what-is-postman-clone)
-- [Key Features](#key-features)
-- [Quick Start](#quick-start)
-- [How It Works](#how-it-works)
-- [Installation Guide](#installation-guide)
-- [Usage Guide](#usage-guide)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [API Testing Examples](#api-testing-examples)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+## 🎯 What is Postman Clone? <a id="what-is-postman-clone"></a>
+## ✨ Key Features <a id="key-features"></a>
+## ⚡ Quick Start <a id="quick-start"></a>
+## 🏗️ How It Works <a id="how-it-works"></a>
+## 📚 Installation Guide <a id="installation-guide"></a>
+## 💡 Usage Guide <a id="usage-guide"></a>
+## 🛠️ Technology Stack <a id="technology-stack"></a>
+## 📁 Project Structure <a id="project-structure"></a>
+## 📝 API Testing Examples <a id="api-testing-examples"></a>
+## ❓ Troubleshooting <a id="troubleshooting"></a>
+## 🤝 Contributing <a id="contributing"></a>
 
 ---
 
@@ -800,50 +799,11 @@ npm run build
 
 ---
 
-## 🚀 Deployment
 
-Ready to deploy? Check out:
-- **Vercel** (Recommended) - Click Deploy
-- **Docker** - Use provided Dockerfile
-- **AWS** - EC2, RDS, S3 setup
-- **Azure** - App Service, PostgreSQL
 
----
 
-## 📞 Support
 
-- 📖 Check [API_TESTING_REFERENCE_GUIDE.md](./API_TESTING_REFERENCE_GUIDE.md) for detailed guide
-- 🐛 [Report Issues](https://github.com/Aestheticsuraj234/postman-clone/issues)
-- 💬 [Discussions](https://github.com/Aestheticsuraj234/postman-clone/discussions)
 
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for details.
-
-Feel free to use, modify, and distribute this project for personal and commercial purposes.
-
----
-
-## 🙏 Acknowledgments
-
-- **Postman** - Inspiration for the core concept
-- **Next.js & Vercel** - Powerful framework and deployment
-- **shadcn/ui** - Beautiful UI components
-- **Prisma** - Excellent ORM
-- All open-source contributors and libraries
-
----
-
-## 📞 Get In Touch
-
-Have questions or suggestions? Feel free to reach out:
-- Open an issue on GitHub
-- Start a discussion
-- Submit a pull request
-
-**Happy API Testing! 🎉**
 
 
 
