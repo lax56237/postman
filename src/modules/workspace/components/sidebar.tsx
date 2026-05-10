@@ -5,6 +5,7 @@ import CreateCollection from '../../collections/components/create-collection';
 import { useCollections } from '@/modules/collections/hooks/collections';
 import EmptyCollections from '../../collections/components/empty-collections';
 import CollectionFolder from '@/modules/collections/components/collection-folder';
+import { HistoryList } from '@/modules/history/components/history-list';
 
 
 interface Props {
@@ -94,11 +95,10 @@ const TabbedSidebar = ({ currentWorkspace }: Props) => {
                 <span className="text-sm font-medium">History</span>
               </div>
             </div>
-            <div className="p-6 text-center">
-              <Clock className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-zinc-300 mb-2">Request History</h3>
-              <p className="text-sm text-zinc-500">Your past requests will appear here. (Coming soon!)</p>
-            </div>
+            <HistoryList 
+              workspaceId={currentWorkspace?.id} 
+              workspaceName={currentWorkspace?.name} 
+            />
           </div>
         );
 

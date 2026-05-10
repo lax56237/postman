@@ -24,6 +24,7 @@ model User {
   accounts      Account[]
   workspaces    Workspace[]       @relation("UserWorkspaces")
   memberships   WorkspaceMember[]
+  histories     History[]
 
   workspaceInvites WorkspaceInvite[]
 }
@@ -236,4 +237,40 @@ model Environment {
 
   workspaceId String
   workspace   Workspace  @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+}
+
+//
+// ─── HISTORY ─────────────────────────────────────────────────────────────
+//
+
+enum HISTORY_STATUS {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+model History {
+  id            String         @id @default(cuid())
+  userId        String
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  workspaceId   String
+  workspaceName String
+  
+  collectionId  String?
+  collectionName String?
+  
+  requestId     String?
+  requestName   String
+  
+  method        REST_METHOD
+  url           String
+  
+  status        HISTORY_STATUS @default(PENDING)
+  httpStatus    Int?
+  
+  createdAt     DateTime       @default(now())
+  
+  @@index([userId, createdAt])
+  @@index([workspaceId, createdAt])
 }

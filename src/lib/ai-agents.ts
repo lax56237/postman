@@ -10,7 +10,7 @@ const model = google('gemini-2.5-flash');
 
 export interface RequestSuggestionParams {
   workspaceName: string;
-  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' ;
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   url?: string;
   description?: string;
 }
@@ -87,7 +87,7 @@ Consider the workspace theme and make names that would make sense to other devel
       model,
       schema: RequestNameSchema,
       prompt,
-      temperature: 0.7, 
+      temperature: 0.7,
     });
 
     return {
@@ -144,7 +144,7 @@ IMPORTANT: Return the jsonBody as a valid JSON string that can be parsed with JS
       model,
       schema: JsonBodySchema,
       prompt: systemPrompt,
-      temperature: 0.3, 
+      temperature: 0.3,
     });
 
     // Parse the JSON string back to an object for easier handling
@@ -298,7 +298,7 @@ export function validateGeneratedJson(jsonBody: Record<string, any>): {
   try {
     // Basic validation
     JSON.stringify(jsonBody);
-    
+
     // Check for empty objects
     if (Object.keys(jsonBody).length === 0) {
       errors.push('Generated JSON is empty');
@@ -312,10 +312,10 @@ export function validateGeneratedJson(jsonBody: Record<string, any>): {
 
     // Check for meaningful property names
     const keys = Object.keys(jsonBody);
-    const hasGenericKeys = keys.some(key => 
+    const hasGenericKeys = keys.some(key =>
       ['data', 'value', 'item', 'field'].includes(key.toLowerCase())
     );
-    
+
     if (hasGenericKeys) {
       suggestions.push('Consider using more specific property names');
     }
@@ -351,11 +351,11 @@ export async function batchSuggestRequestNames(
 
   return results.map((result, index) => ({
     originalRequest: requests[index],
-    suggestions: result.status === 'fulfilled' && result.value.success 
-      ? result.value.data 
+    suggestions: result.status === 'fulfilled' && result.value.success
+      ? result.value.data
       : null,
-    error: result.status === 'fulfilled' 
-      ? result.value.error 
+    error: result.status === 'fulfilled'
+      ? result.value.error
       : result.reason?.message || 'Unknown error'
   }));
 }
