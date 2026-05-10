@@ -26,8 +26,12 @@ export function useGenerateJsonBody(){
             queryClient.invalidateQueries({ queryKey: ["json-body"] });
             toast.success("JSON body generated successfully");
         },
-        onError: (error) => {
-            toast.error("Failed to generate JSON body");
+        onError: (error: any) => {
+            if (error.message && error.message.includes('Quota exceeded')) {
+                toast.error("AI API Quota Exceeded. Please check your Google Gemini API key billing.");
+            } else {
+                toast.error(error.message || "Failed to generate JSON body");
+            }
         }
     })
 }

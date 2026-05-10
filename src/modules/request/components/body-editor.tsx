@@ -121,11 +121,12 @@ const BodyEditor: React.FC<BodyEditorProps> = ({
 
       if (result?.jsonBody) {
         form.setValue('body', JSON.stringify(result.jsonBody, null, 2));
+        setShowGenerateDialog(false);
+        setPrompt('');
       }
-      setShowGenerateDialog(false);
-      setPrompt('');
     } catch (error) {
       console.error('Failed to generate JSON body:', error);
+      // Let the error propagate up so the mutation's onError can handle the toast notification
     }
   }
 

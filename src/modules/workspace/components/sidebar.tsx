@@ -84,6 +84,60 @@ const TabbedSidebar = ({ currentWorkspace }: Props) => {
           </div>
         );
 
+      case 'History':
+        return (
+          <div className="h-full bg-zinc-950 text-zinc-100 flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-zinc-400">{currentWorkspace?.name}</span>
+                <span className="text-zinc-600">›</span>
+                <span className="text-sm font-medium">History</span>
+              </div>
+            </div>
+            <div className="p-6 text-center">
+              <Clock className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-zinc-300 mb-2">Request History</h3>
+              <p className="text-sm text-zinc-500">Your past requests will appear here. (Coming soon!)</p>
+            </div>
+          </div>
+        );
+
+      case 'Share':
+        return (
+          <div className="h-full bg-zinc-950 text-zinc-100 flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-zinc-400">{currentWorkspace?.name}</span>
+                <span className="text-zinc-600">›</span>
+                <span className="text-sm font-medium">Share</span>
+              </div>
+            </div>
+            <div className="p-6 text-center">
+              <Share2 className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-zinc-300 mb-2">Share Workspace</h3>
+              <p className="text-sm text-zinc-500">Invite team members to collaborate. (Use the top right Invite button)</p>
+            </div>
+          </div>
+        );
+
+      case 'Code':
+        return (
+          <div className="h-full bg-zinc-950 text-zinc-100 flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-zinc-400">{currentWorkspace?.name}</span>
+                <span className="text-zinc-600">›</span>
+                <span className="text-sm font-medium">Code Generation</span>
+              </div>
+            </div>
+            <div className="p-6 text-center">
+              <Code className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-zinc-300 mb-2">Code Snippets</h3>
+              <p className="text-sm text-zinc-500">Generate code snippets for your APIs. (Coming soon!)</p>
+            </div>
+          </div>
+        );
+
       default:
         return <div className="p-4 text-zinc-400">Select a tab to view content</div>;
     }

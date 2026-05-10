@@ -1,8 +1,12 @@
 import { generateObject, generateText } from 'ai';
-import { google } from '@ai-sdk/google';
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { z } from 'zod';
 
-const model = google('gemini-2.0-flash');
+const google = createGoogleGenerativeAI({
+  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+});
+
+const model = google('gemini-2.5-flash');
 
 export interface RequestSuggestionParams {
   workspaceName: string;

@@ -189,7 +189,7 @@ export async function run(requestId: string) {
 
 
 export async function runDirect(requestData: {
-  id: string;
+  id?: string;
   method: string;
   url: string;
   headers?: Record<string, string>;
@@ -207,50 +207,91 @@ export async function runDirect(requestData: {
 
     const result = await sendRequest(requestConfig);
 
-    const requestRun = await db.requestRun.create({
-      data: {
-        requestId: requestData.id,
+    let requestRun = null;
+    
+    // Only attempt to save to DB if we have a valid request ID
+    if (requestData.id) {
+      try {
+        requestRun = await db.requestRun.create({
+          data: {
+            requestId: requestData.id,
+            status: result.status || 0,
+            statusText: result.statusText || (result.error ? 'Error' : null),
+            headers: result.headers || "",
+            body: result.data ? (typeof result.data === 'string' ? result.data : JSON.stringify(result.data)) : null,
+            durationMs: result.duration || 0
+          }
+        });
+
+        // Update request with latest response if successful
+        if (result.data && !result.error) {
+          await db.request.update({
+            where: { id: requestData.id },
+            data: {
+              response: result.data,
+              updatedAt: new Date()
+            }
+          });
+        }
+      } catch (dbError) {
+        console.error("Failed to save request run to DB", dbError);
+        // Ignore DB error, we still want to return the result to the user
+      }
+    }
+
+    // Mock a requestRun object for the UI if it wasn't saved
+    if (!requestRun) {
+      requestRun = {
+        id: "temp-" + Date.now(),
         status: result.status || 0,
         statusText: result.statusText || (result.error ? 'Error' : null),
         headers: result.headers || "",
         body: result.data ? (typeof result.data === 'string' ? result.data : JSON.stringify(result.data)) : null,
         durationMs: result.duration || 0
-      }
-    });
-
-    // Update request with latest response if successful
-    if (result.data && !result.error) {
-      await db.request.update({
-        where: { id: requestData.id },
-        data: {
-          response: result.data,
-          updatedAt: new Date()
-        }
-      });
+      };
     }
 
     return {
-      success: true,
+      success: !result.error,
       requestRun,
       result
     };
 
   } catch (error: any) {
-    const failedRun = await db.requestRun.create({
-      data: {
-        requestId: requestData.id,
+    let failedRun = null;
+    if (requestData.id) {
+      try {
+        failedRun = await db.requestRun.create({
+          data: {
+            requestId: requestData.id,
+            status: 0,
+            statusText: 'Failed',
+            headers: "",
+            body: error.message,
+            durationMs: 0
+          }
+        });
+      } catch (e) {}
+    }
+    
+    if (!failedRun) {
+      failedRun = {
+        id: "temp-" + Date.now(),
         status: 0,
         statusText: 'Failed',
         headers: "",
         body: error.message,
         durationMs: 0
-      }
-    });
+      };
+    }
 
     return {
       success: false,
       error: error.message,
-      requestRun: failedRun
+      requestRun: failedRun,
+      result: {
+        error: error.message
+      }
     };
   }
 }
